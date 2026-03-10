@@ -1,3 +1,7 @@
+type TProductSize = 'S' | 'M' | 'L';
+
+type TProductColor = 'red' | 'blue' | 'green';
+
 export type TProduct = {
   id: string;
   title: string;
@@ -5,4 +9,7 @@ export type TProduct = {
   description: string;
   image: string;
   category: string;
+  quantity?: number;
+  size?: TProductSize;
+  color?: TProductColor;
 };

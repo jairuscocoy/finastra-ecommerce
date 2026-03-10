@@ -3,12 +3,14 @@ import type { TProduct } from '../../types/product-types';
 
 type TProductState = {
   products: TProduct[];
+  searchProduct: string | null;
   loading: boolean;
   error: string | null;
 };
 
 const initialState: TProductState = {
   products: [],
+  searchProduct: '',
   loading: false,
   error: null,
 };
@@ -25,7 +27,11 @@ export const fetchProducts = createAsyncThunk(
 const productSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchProduct: (state, action) => {
+      state.searchProduct = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -43,4 +49,5 @@ const productSlice = createSlice({
   },
 });
 
+export const { setSearchProduct } = productSlice.actions;
 export default productSlice.reducer;

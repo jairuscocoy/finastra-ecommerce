@@ -1,13 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { TProduct } from '../../types/product-types';
 
-type TCart = {
-  name: string;
-  description: string;
-  size: 'S' | 'M' | 'L';
-};
+
 interface ICountCart {
   count: number;
-  items: TCart[];
+  items: TProduct[];
 }
 
 const initialState: ICountCart = {
