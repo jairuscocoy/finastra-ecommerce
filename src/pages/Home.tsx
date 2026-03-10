@@ -3,7 +3,7 @@ import type { AppDispatch, RootState } from '../store';
 import { add } from '../store/slices/addToCartSlice';
 
 export default function Home() {
-  const count = useSelector((state: RootState) => state.addToCart.count);
+  const count = useSelector((state: RootState) => state.cart.count);
   const dispatch = useDispatch<AppDispatch>();
   return (
     <div className="">
