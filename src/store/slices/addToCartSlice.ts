@@ -7,12 +7,12 @@ type TCart = {
 };
 interface ICountCart {
   count: number;
-  cart: TCart[];
+  items: TCart[];
 }
 
 const initialState: ICountCart = {
   count: 0,
-  cart: [],
+  items: [],
 };
 
 export const addToCartSlice = createSlice({
