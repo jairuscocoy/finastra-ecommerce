@@ -15,7 +15,7 @@ const initialState: ICountCart = {
   items: [],
 };
 
-export const addToCartSlice = createSlice({
+export const cartSlice = createSlice({
   name: 'addToCart',
   initialState,
   reducers: {
@@ -25,5 +25,5 @@ export const addToCartSlice = createSlice({
   },
 });
 
-export const { add } = addToCartSlice.actions;
-export default addToCartSlice.reducer;
+export const { add } = cartSlice.actions;
+export default cartSlice.reducer;
