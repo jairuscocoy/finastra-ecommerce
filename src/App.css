@@ -140,8 +140,11 @@ body {
 }
 
 .header-actions {
+  display: flex;
+  flex-direction: row;
   padding: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  gap: 20px;
 }
 
 .search-bar {
@@ -156,7 +159,19 @@ body {
   transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
-.search-bar:focus {
+.search-bar:focus, .header-actions select:focus {
    border-color: #484848; 
   box-shadow: 0 0 5px rgba(98, 98, 98, 0.5); 
+}
+
+.header-actions select, button {
+  background-color: #dfdfdf;
+  height: 40px; 
+  width: 100px;
+  padding: 10px; 
+  border: none;
+  border-radius:9999px;
+  color:#303030;
+  cursor: pointer;
+  font-size: small;
 }
