@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { TProduct } from '../../types/product-types';
+import type { TProduct, TSortBy, TSortOrder } from '../../types/product-types';
 
 type TProductState = {
   products: TProduct[];
   searchProduct: string | null;
+  sortBy: TSortBy;
+  sortOrder: TSortOrder;
   loading: boolean;
   error: string | null;
 };
@@ -11,6 +13,8 @@ type TProductState = {
 const initialState: TProductState = {
   products: [],
   searchProduct: '',
+  sortBy: 'title',
+  sortOrder: 'asc',
   loading: false,
   error: null,
 };
@@ -31,6 +35,12 @@ const productSlice = createSlice({
     setSearchProduct: (state, action) => {
       state.searchProduct = action.payload;
     },
+    setSortBy: (state, action) => {
+      state.sortBy = action.payload;
+    },
+    setSortOrder: (state, action) => {
+      state.sortOrder = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -49,5 +59,6 @@ const productSlice = createSlice({
   },
 });
 
-export const { setSearchProduct } = productSlice.actions;
+export const { setSearchProduct, setSortBy, setSortOrder } =
+  productSlice.actions;
 export default productSlice.reducer;

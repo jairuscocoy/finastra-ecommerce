@@ -1,17 +1,24 @@
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '../store';
 import { useEffect, useState } from 'react';
-import { fetchProducts, setSearchProduct } from '../store/slices/productSlice';
+import {
+  fetchProducts,
+  setSearchProduct,
+  setSortBy,
+  setSortOrder,
+} from '../store/slices/productSlice';
 import { ItemCard } from '../components/ItemCard';
-import { selectSearchedProducts } from '../store/selectors/productSelectors';
 import useDebounce from '../hooks/useDebounce';
+import { selectSortedProducts } from '../store/selectors/sortProductsSelector';
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
   const [searchInput, setSearchInput] = useState('');
   const debouncedInput = useDebounce(searchInput, 300);
-  const products = useSelector(selectSearchedProducts);
-  const { loading, error } = useSelector((state: RootState) => state.products);
+  const products = useSelector(selectSortedProducts);
+  const { loading, error, sortBy, sortOrder } = useSelector(
+    (state: RootState) => state.products,
+  );
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -33,6 +40,24 @@ export default function Home() {
           onChange={(e) => setSearchInput(e.target.value)}
           className="search-bar"
         />
+        <select
+          value={sortBy}
+          onChange={(e) => dispatch(setSortBy(e.target.value))}
+        >
+          <option value="" disabled selected>
+            Select category
+          </option>
+          <option value="title">Name</option>
+          <option value="price">Price</option>
+          <option value="category">Category</option>
+        </select>
+        <button
+          onClick={() =>
+            dispatch(setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc'))
+          }
+        >
+          {sortOrder === 'asc' ? 'top' : 'bottom'}
+        </button>
       </div>
 
       <div className="product-list">
