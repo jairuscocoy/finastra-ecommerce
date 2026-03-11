@@ -8,4 +8,7 @@
 
 ```bash
 git clone https://github.com/jairuscocoy/finastra-ecommerce.git
+
 cd finastra-ecommerce
+
+npm install
