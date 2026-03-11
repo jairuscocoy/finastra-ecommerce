@@ -2,7 +2,7 @@ import type { TProduct } from '../types/product-types';
 
 type TItemProps = {
   product: TProduct;
-  onHandleAddToCart?: (product: TProduct) => void;
+ 
 };
 export const ItemCard = (props: TItemProps) => {
   const { title, price, image, category } = props.product;

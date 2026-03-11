@@ -1,13 +1,16 @@
-type TProductSize = 'S' | 'M' | 'L';
+export type TProductSize = 'S' | 'M' | 'L';
 
-type TProductColor = 'red' | 'blue' | 'green';
+export type TProductColor = 'red' | 'blue' | 'green';
 
-export type TSortBy = 'title' | 'category' | 'price'
+export type TSortBy = 'title' | 'category' | 'price';
 
 export type TSortOrder = 'asc' | 'desc';
-
+type TRating = {
+  count: number;
+  rate: number;
+};
 export type TProduct = {
-  id: string;
+  id: number;
   title: string;
   price: number;
   description: string;
@@ -16,4 +19,5 @@ export type TProduct = {
   quantity?: number;
   size?: TProductSize;
   color?: TProductColor;
+  rating: TRating;
 };
